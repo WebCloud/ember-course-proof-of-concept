@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
 
       this.get('authentication').login({ email, password })
         .then(()=> {
-          this.transitionToRoute('index');
+          this.transitionToRoute('authenticated');
         })
         .catch(console.error);
     }
