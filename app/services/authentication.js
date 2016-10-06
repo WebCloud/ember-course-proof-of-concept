@@ -24,6 +24,11 @@ export default Ember.Service.extend({
     });
   },
 
+  logout() {
+    this.set('currentUser', null);
+    sessionStorage.removeItem('currentUser');
+  },
+
   _fetchCurrentUser(user) {
     return this.get('store').queryRecord('user', user)
       .then((user) => {
