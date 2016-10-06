@@ -17,9 +17,17 @@ export default Ember.Service.extend({
 
             return user;
           })
+          .then(this._saveSession)
           .then(resolve)
           .catch(reject);
       }
     });
+  },
+
+  _saveSession(userInstance) {
+    const currentUser = userInstance.getProperties('email', 'name');
+    sessionStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+    return userInstance;
   }
 });
