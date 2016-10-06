@@ -7,7 +7,8 @@ export default Ember.Service.extend({
   isAuthenticated: Ember.computed.bool('currentUser'),
 
   init() {
-    this._refreshSession();
+    this.set('currentUser', this._getCurrentUserObject());
+    this._refreshSession().then(() => console.log('User session refreshed'));
   },
 
   login(user) {
@@ -39,12 +40,21 @@ export default Ember.Service.extend({
     return userInstance;
   },
 
+  _getCurrentUserObject() {
+    const userSession = sessionStorage.getItem('currentUser')
+
+    if (Ember.isPresent(userSession)) {
+      return JSON.parse(userSession);
+    } else {
+      return null;
+    }
+  },
+
   _refreshSession() {
     return new Promise((resolve, reject) => {
-      const userSession = sessionStorage.getItem('currentUser')
+      const userObject = this._getCurrentUserObject();
 
-      if (Ember.isPresent(userSession)) {
-        const userObject = JSON.parse(userSession);
+      if (Ember.isPresent(userObject)) {
         this._fetchCurrentUser(userObject)
           .then(resolve)
           .catch(reject);
