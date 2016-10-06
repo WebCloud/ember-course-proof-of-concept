@@ -4,6 +4,7 @@ const { Promise } = Ember.RSVP;
 export default Ember.Service.extend({
   store: Ember.inject.service(),
   currentUser: null,
+  isAuthenticated: Ember.computed.bool('currentUser'),
 
   login(user) {
     return new Promise((resolve, reject) => {
