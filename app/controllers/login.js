@@ -4,7 +4,11 @@ export default Ember.Controller.extend({
   user: { login: null, password: null },
   actions: {
     login() {
-      console.info(this.get('user'));
+      const { login: email, password } = this.get('user');
+
+      this.store.queryRecord('user', { email, password })
+        .then(console.info)
+        .catch(console.error);
     }
   }
 });
