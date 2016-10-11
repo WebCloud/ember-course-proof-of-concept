@@ -30,12 +30,17 @@ export default Ember.Service.extend({
   },
 
   _fetchCurrentUser(user) {
-    return this.get('store').queryRecord('user', user)
-      .then((user) => {
-        this.set('currentUser', user);
+    if (typeof user.id !== 'undefined') {
+      this.set('currentUser', user);
+      return Promise.resolve(user);
+    } else {
+      return this.get('store').queryRecord('user', user)
+        .then((user) => {
+          this.set('currentUser', user);
 
-        return user;
-      });
+          return user;
+        });
+    }
   },
 
   _saveSession(userInstance) {
@@ -46,7 +51,7 @@ export default Ember.Service.extend({
   },
 
   _getCurrentUserObject() {
-    const userSession = sessionStorage.getItem('currentUser')
+    const userSession = sessionStorage.getItem('currentUser');
 
     if (Ember.isPresent(userSession)) {
       return JSON.parse(userSession);
