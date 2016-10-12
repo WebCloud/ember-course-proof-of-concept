@@ -1,4 +1,35 @@
 input {
   display: block;
   margin: 1em 0;
+  padding: 1em;
+  border: 1px solid #5794d4;
+  border-radius: 0.5em;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.wrapper a, button {
+    margin: 0 1em;
+    padding: 0.7em;
+    background-color: #fff;
+    border: 1px solid #5794d4;
+    border-radius: 0.5em;
+    line-height: 1;
+    text-decoration: none;
+    color: #5794d4;
+}
+
+button {
+  margin: 0;
+  padding: 1em
+}
+
+.wrapper a:hover {
+    color: #fff;
+    background-color: #5794d4;
+    border-color: #1e67b5;
 }
