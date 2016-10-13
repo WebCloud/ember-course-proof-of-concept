@@ -23,13 +23,15 @@ input {
     color: #5794d4;
 }
 
-button {
-  margin: 0;
-  padding: 1em
-}
-
-.wrapper a:hover {
+.wrapper a:hover, button:hover {
     color: #fff;
     background-color: #5794d4;
     border-color: #1e67b5;
+}
+
+button {
+  margin: 0;
+  padding: 1em;
+  outline: none;
+  cursor: pointer;
 }
