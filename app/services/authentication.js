@@ -51,9 +51,12 @@ export default Ember.Service.extend({
   },
 
   _getCurrentUserObject() {
+    const currentUser = this.get('currentUser');
     const userSession = sessionStorage.getItem('currentUser');
 
-    if (Ember.isPresent(userSession)) {
+    if (Ember.isPresent(currentUser)) {
+      return currentUser;
+    } else if (Ember.isPresent(userSession)) {
       return JSON.parse(userSession);
     } else {
       return null;

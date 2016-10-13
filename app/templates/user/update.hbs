@@ -1,9 +1,7 @@
-{{#link-to 'index'}}back{{/link-to}}
-
-<form {{action 'signup' on='submit'}}>
+<form {{action 'save' model on='submit'}}>
   {{input type="text" placeholder="name" value=model.name}}
   {{input type="email" placeholder="email" value=model.email}}
   {{input type="password" placeholder="password" value=model.password}}
   {{input type="password" placeholder="confirm password" value=model.confirmPassword}}
-  <button>signup</button>
+  <button>update</button>
 </form>

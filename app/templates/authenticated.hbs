@@ -1,3 +1,8 @@
-Hello from authenticated route, {{currentUser.name}}<br />
-<button type="button" {{action 'logout'}}>logout</button>
-<button type="button" {{action 'deleteUser'}}>delete account</button><br />
+<div class="authenticated">
+  <p>Hello from authenticated route, {{currentUser.name}}. {{#link-to 'index'}}Back to index{{/link-to}}</p>
+  <div class="actions">
+    <button type="button" {{action 'logout'}}>logout</button>
+    <button type="button" {{action 'deleteUser'}}>delete account</button>
+  </div>
+  {{#link-to 'user.update'}}Update data{{/link-to}}
+</div>
