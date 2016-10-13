@@ -35,3 +35,13 @@ button {
   outline: none;
   cursor: pointer;
 }
+
+.authenticated {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.actions {
+  margin: 1em 0;
+}
