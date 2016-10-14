@@ -2,5 +2,5 @@
   Hello {{authentication.currentUser.name}}
   <button type="button" {{action 'logout'}}>logout</button>
 {{else}}
-  {{#link-to 'login'}}login{{/link-to}} or {{#link-to 'signup'}}signup{{/link-to}}
+  {{#link-to 'user.login'}}login{{/link-to}} or {{#link-to 'user.signup'}}signup{{/link-to}}
 {{/if}}
