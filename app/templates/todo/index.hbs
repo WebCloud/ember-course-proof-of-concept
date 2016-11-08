@@ -2,6 +2,15 @@
 <br />
 <ul>
   {{#each model as |todo|}}
-    <li>{{todo.title}}</li>
+    {{#if todo.isEditing}}
+      <form {{action 'update' todo on='submit'}}>
+        {{render "todo/form" todo}}
+        <button>update</button>
+        <button {{action 'delete' todo}}>delete</button>
+        <button {{action 'toggleEditing' todo}}>cancel</button>
+      </form>
+    {{else}}
+      <li {{action 'toggleEditing' todo}}>{{todo.title}}</li>
+    {{/if}}
   {{/each}}
 </ul>
