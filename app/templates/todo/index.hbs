@@ -1,0 +1,7 @@
+{{#link-to 'todo.create'}}create new todo{{/link-to}}
+<br />
+<ul>
+  {{#each model as |todo|}}
+    <li>{{todo.title}}</li>
+  {{/each}}
+</ul>

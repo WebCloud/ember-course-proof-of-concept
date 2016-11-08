@@ -14,6 +14,9 @@ Router.map(function() {
     this.route('signup');
     this.route('update');
   });
+  this.route('todo', function() {
+    this.route('create');
+  });
 });
 
 export default Router;
