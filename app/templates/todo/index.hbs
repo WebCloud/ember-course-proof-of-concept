@@ -1,16 +1,17 @@
-{{#link-to 'todo.create'}}create new todo{{/link-to}}
-<br />
-<ul>
+<ul class="todos">
   {{#each model as |todo|}}
+    <li>
     {{#if todo.isEditing}}
-      <form {{action 'update' todo on='submit'}}>
+      <form class="spaced" {{action 'updateTodo' todo on='submit'}}>
         {{render "todo/form" todo}}
-        <button>update</button>
-        <button {{action 'delete' todo}}>delete</button>
+        <button disabled={{ todo.isInvalid }}>update</button>
+        <button class="danger" {{action 'deleteTodo' todo}}>delete</button>
         <button {{action 'toggleEditing' todo}}>cancel</button>
       </form>
     {{else}}
-      <li {{action 'toggleEditing' todo}}>{{todo.title}}</li>
+      {{input type="checkbox" checked=todo.isDone }}
+      <a class="subtle" {{action 'toggleEditing' todo}}>{{todo.title}}</a>
     {{/if}}
+    </li>
   {{/each}}
 </ul>
