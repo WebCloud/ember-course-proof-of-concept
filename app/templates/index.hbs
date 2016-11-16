@@ -1,6 +1,3 @@
-{{#if authentication.isAuthenticated}}
-  Hello {{authentication.currentUser.name}}
-  <button type="button" {{action 'logout'}}>logout</button>
-{{else}}
+<div class="centered">
   {{#link-to 'user.login'}}login{{/link-to}} or {{#link-to 'user.signup'}}signup{{/link-to}}
-{{/if}}
+</div>

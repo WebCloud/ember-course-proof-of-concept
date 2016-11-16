@@ -1,8 +1,9 @@
-<div class="authenticated">
-  <p>Hello from authenticated route, {{currentUser.name}}. {{#link-to 'index'}}Back to index{{/link-to}}</p>
-  <div class="actions">
-    <button type="button" {{action 'logout'}}>logout</button>
-    <button type="button" {{action 'deleteUser'}}>delete account</button>
-  </div>
-  {{#link-to 'user.update'}}Update data{{/link-to}}
+<p style="width: 100%; text-align: right">
+  Hello, {{#link-to 'user.update' class="subtle"}}{{currentUser.name}}{{/link-to}}
+  <button class="subtle" {{action 'logout'}}>logout</button>
+</p>
+<div class="todos">
+  {{render "todo/create" todo}}
+  <br />
+  {{render "todo/index" model}}
 </div>

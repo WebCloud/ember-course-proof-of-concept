@@ -1,4 +1,4 @@
-<form {{action 'create' model on='submit'}}>
+<form {{action 'createTodo' model on='submit'}}>
   {{partial "todo/form"}}
-  <button>create</button>
+  <button disabled={{ model.isInvalid }}>create</button>
 </form>

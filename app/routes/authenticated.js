@@ -11,17 +11,45 @@ export default Ember.Route.extend({
     }
   },
 
+  model() {
+    return this.get('authentication')._refreshSession()
+      .then((user) => {
+        return this.store.query('todo', { userId: user.id });
+      });
+  },
+
   setupController(controller, model) {
     this._super(controller, model);
-    controller.set('currentUser', this.get('authentication.currentUser'));
+    const user = this.get('authentication.currentUser');
+    controller.set('currentUser', user);
+    controller.set('todo', this.store.createRecord('todo', { user }));
   },
 
   actions: {
-    deleteUser() {
-      this.get('authentication.currentUser')
-        .destroyRecord()
-        .then(() => this.get('authentication').logout())
-        .then(() => this.transitionTo('index'));
+    toggleEditing(todo) {
+      todo.toggleProperty('isEditing');
+    },
+
+    createTodo(todo) {
+      if (todo.get('isInvalid')){
+        return;
+      }
+
+      const controller = this.controllerFor('authenticated');
+      todo.save()
+        .then(() => this.refresh());
+    },
+
+    updateTodo(todo) {
+      if (todo.get('isInvalid')){
+        return;
+      }
+
+      todo.save().then(()=> todo.toggleProperty('isEditing'));
+    },
+
+    deleteTodo(todo) {
+      todo.destroyRecord();
     }
   }
 });

@@ -1,4 +1,8 @@
 <form {{action 'save' model on='submit'}}>
+  <h2>Update your data</h2>
   {{partial "user/form"}}
-  <button>update</button>
+  <div class="spaced">
+    <button class="danger" {{action 'deleteUser'}}>delete account</button>
+    <button>update</button>
+  </div>
 </form>
