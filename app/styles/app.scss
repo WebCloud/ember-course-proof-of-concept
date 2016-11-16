@@ -231,7 +231,7 @@ ul, ol {
   align-items: center;
   width: 100%;
 
-  .innactive {
+  li.innactive {
     color: lighten($fontAccent, 30%);
     text-decoration: line-through;
     font-style: italic;
@@ -240,4 +240,11 @@ ul, ol {
 
 ul.todos, ol.todos {
   align-items: flex-start;
+}
+
+.active .is-active, .innactive .is-innactive {
+  color: $buttonShade;
+  background-color: $buttonAccent;
+  border-color: $buttonShade;
+  text-decoration: none;
 }

@@ -5,5 +5,10 @@
 <div class="todos">
   {{render "todo/create" todo}}
   <br />
-  {{render "todo/index" allTodos}}
+  <div class="centered {{currentFilter}}">
+    <button class="subtle is-active" {{action 'changeFilter' 'active'}}>to do</button>
+    <button class="subtle is-innactive" {{action 'changeFilter' 'innactive'}}>done</button>
+  </div>
+  <br />
+  {{render "todo/index" currentTodos}}
 </div>

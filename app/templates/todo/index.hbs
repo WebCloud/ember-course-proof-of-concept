@@ -1,6 +1,6 @@
 <ul class="todos">
-  {{#each model.activeTodos as |todo|}}
-    <li>
+  {{#each model as |todo|}}
+    <li class="{{if todo.isDone "innactive"}}">
     {{#if todo.isEditing}}
       <form class="spaced" {{action 'updateTodo' todo on='submit'}}>
         {{render "todo/form" todo}}
@@ -10,14 +10,12 @@
       </form>
     {{else}}
       {{input type="checkbox" checked=todo.isDone }}
+      {{#if todo.isDone}}
+      {{todo.title}}
+      {{else}}
       <a class="subtle" {{action 'toggleEditing' todo}}>{{todo.title}}</a>
+      {{/if}}
     {{/if}}
     </li>
-  {{/each}}
-</ul>
-
-<ul class="todos">
-  {{#each model.innactiveTodos as |todo|}}
-    <li class="innactive">{{input type="checkbox" checked=todo.isDone }}{{todo.title}}</li>
   {{/each}}
 </ul>
