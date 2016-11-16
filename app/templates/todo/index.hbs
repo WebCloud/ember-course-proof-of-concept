@@ -1,5 +1,5 @@
 <ul class="todos">
-  {{#each model as |todo|}}
+  {{#each model.activeTodos as |todo|}}
     <li>
     {{#if todo.isEditing}}
       <form class="spaced" {{action 'updateTodo' todo on='submit'}}>
@@ -13,5 +13,11 @@
       <a class="subtle" {{action 'toggleEditing' todo}}>{{todo.title}}</a>
     {{/if}}
     </li>
+  {{/each}}
+</ul>
+
+<ul class="todos">
+  {{#each model.innactiveTodos as |todo|}}
+    <li class="innactive">{{input type="checkbox" checked=todo.isDone }}{{todo.title}}</li>
   {{/each}}
 </ul>
